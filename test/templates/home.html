@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .success{
+        background:green;
+    }
+</style>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{category}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {%endif%}
+    {% endwith %}
+    <h1>{{another}}</h1>
+    {% for post in posts %}
+    <h2>{{post.title}}</h2>
+    {% endfor %}
+</body>
+</html>

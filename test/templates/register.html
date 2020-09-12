@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .form-label{
+        display: inline-block;
+        width: 130px;
+    }
+</style>
+<body>
+    <form method="POST" action="">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            {{form.username.label(class="form-label")}}
+            {% if form.username.errors %}
+                {{form.username(class="form-input")}}
+                <div class="error">
+                    {%for error in form.username.errors%}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.username(class="form-input")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.email.label(class="form-label")}}
+            {{form.email(class="form-input")}}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <span>{{error}}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.password.label(class="form-label")}}
+            {{form.password(class="form-input")}}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <span>{{error}}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.confirm_password.label(class="form-label")}}
+            {{form.confirm_password(class="form-input")}}
+            {% if form.confirm_password.errors %}
+                {% for error in form.confirm_password.errors %}
+                    <span>{{error}}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.submit(class="form-submit")}}
+        </div>
+    </form>
+    <a href="{{url_for('login')}}">Login</a>
+</body>
+</html>
